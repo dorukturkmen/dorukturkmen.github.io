@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doruk Türkmen | Visual Designer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Page Specific Overrides moved to inline for specific sections if needed, 
+           but mostly relying on style.css now */
+        .hero-narrow {
+            padding-top: 120px;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero-narrow h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-narrow p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#projects" class="logo nav-item" data-target="projects">Doruk Türkmen</a>
+        <div class="nav-links">
+            <a href="#projects" class="nav-item active" data-target="projects">Projects</a>
+            <a href="#teaching" class="nav-item" data-target="teaching">Teaching</a>
+            <a href="#research" class="nav-item" data-target="research">Research</a>
+            <a href="#about" class="nav-item" data-target="about">About & Contact</a>
+        </div>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <main>
+        <!-- =========================================
+             SECTION: PROJECTS (HOME)
+             ========================================= -->
+        <section id="projects" class="page-section active-section">
+            <!-- HERO SECTION (Narrow) -->
+            <div class="hero-narrow animate-on-scroll">
+                <h1>A Space For Expression</h1>
+                <p>A collection of my experiments, projects, games, lectures, research, <span
+                        class="shrink-text">thoughts,
+                        mind, insecurities and etc. </span></p>
+            </div>
+
+            <!-- PROJECTS GRID (3 Columns) -->
+            <div class="project-grid">
+
+                <!-- PROJECT CARD 1 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 1">
+                    </div>
+                    <div class="card-meta">
+                        <span>2024</span>
+                        <span>Brand Identity</span>
+                    </div>
+                    <h3 class="card-title">Neon Future</h3>
+                    <p class="card-desc">A futuristic branding identity for a tech startup focused on AI.</p>
+                    <div class="card-tags">
+                        <span class="tag">Branding</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT CARD 2 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 2">
+                    </div>
+                    <div class="card-meta">
+                        <span>2023</span>
+                        <span>Web Design</span>
+                    </div>
+                    <h3 class="card-title">Retro Game Hub</h3>
+                    <p class="card-desc">Designed the interface for a cloud streaming service for retro games.</p>
+                    <div class="card-tags">
+                        <span class="tag">Web</span>
+                        <span class="tag">Interaction</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT CARD 3 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 3">
+                    </div>
+                    <div class="card-meta">
+                        <span>2023</span>
+                        <span>Editorial</span>
+                    </div>
+                    <h3 class="card-title">Shift Magazine</h3>
+                    <p class="card-desc">Art direction and layout design for a monthly culture magazine.</p>
+                    <div class="card-tags">
+                        <span class="tag">Print</span>
+                        <span class="tag">Layout</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT CARD 4 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 4">
+                    </div>
+                    <div class="card-meta">
+                        <span>2022</span>
+                        <span>Packaging</span>
+                    </div>
+                    <h3 class="card-title">Pure Botanicals</h3>
+                    <p class="card-desc">Sustainable packaging design for a luxury skincare line.</p>
+                    <div class="card-tags">
+                        <span class="tag">Packaging</span>
+                        <span class="tag">3D Render</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT CARD 5 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 5">
+                    </div>
+                    <div class="card-meta">
+                        <span>2022</span>
+                        <span>Photography</span>
+                    </div>
+                    <h3 class="card-title">Urban Decay</h3>
+                    <p class="card-desc">A photo series exploring the brutalist architecture of Eastern Europe.</p>
+                    <div class="card-tags">
+                        <span class="tag">Photography</span>
+                        <span class="tag">Art Direction</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT CARD 6 -->
+                <a href="#" class="project-card animate-on-scroll">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Project 6">
+                    </div>
+                    <div class="card-meta">
+                        <span>2021</span>
+                        <span>Development</span>
+                    </div>
+                    <h3 class="card-title">Dev Portfolio</h3>
+                    <p class="card-desc">My very own portfolio site built from scratch.</p>
+                    <div class="card-tags">
+                        <span class="tag">Code</span>
+                        <span class="tag">Frontend</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- =========================================
+             SECTION: TEACHING
+             ========================================= -->
+        <section id="teaching" class="page-section">
+            <div class="animate-on-scroll" style="padding-top: 120px; padding-bottom: 60px;">
+                <h1>Education & Workshops</h1>
+                <p style="color: #888; max-width: 600px;">Sharing knowledge through academic courses, workshops, and
+                    open
+                    lectures.</p>
+            </div>
+
+            <div class="teaching-grid">
+                <!-- COURSE 1 -->
+                <div class="course-card animate-on-scroll">
+                    <div class="course-semester">Spring 2025</div>
+                    <h2>Interactive Design Fundamentals</h2>
+                    <p>An introduction to the core principles of interaction design, focusing on user behavior and
+                        digital
+                        feedback loops.</p>
+                    <a href="#" class="resource-link">View Syllabus</a>
+                </div>
+
+                <!-- COURSE 2 -->
+                <div class="course-card animate-on-scroll">
+                    <div class="course-semester">Fall 2024</div>
+                    <h2>Web Brutalism Workshop</h2>
+                    <p>A weekend intensive exploring the history and application of brutalist aesthetics in modern web
+                        development.</p>
+                    <a href="#" class="resource-link">View Slides</a>
+                </div>
+
+                <!-- COURSE 3 -->
+                <div class="course-card animate-on-scroll">
+                    <div class="course-semester">Spring 2024</div>
+                    <h2>Typography in Motion</h2>
+                    <p>Advanced techniques for animating variable fonts and creating expressive kinetic typography for
+                        the
+                        web.</p>
+                    <a href="#" class="resource-link">Watch Lecture</a>
+                </div>
+
+                <!-- COURSE 4 -->
+                <div class="course-card animate-on-scroll">
+                    <div class="course-semester">Guest Lecture</div>
+                    <h2>The Anti-Pattern</h2>
+                    <p>Discussing when and why to break standard UI patterns in favor of memorable experiences.</p>
+                    <a href="#" class="resource-link">View Recording</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             SECTION: RESEARCH
+             ========================================= -->
+        <section id="research" class="page-section">
+            <div class="animate-on-scroll" style="padding-top: 120px; padding-bottom: 40px;">
+                <h1>Research & Writing</h1>
+                <p style="color: #888;">Explorations in design theory, technology, and culture.</p>
+            </div>
+
+            <div class="research-list">
+                <!-- ITEM 1 -->
+                <article class="research-item animate-on-scroll">
+                    <div class="research-date">DEC 2025</div>
+                    <div class="research-content">
+                        <h2>The Future of Brutalism in UI</h2>
+                        <p>Analyzing how the raw, unpolished aesthetic of brutalism is making a comeback in modern web
+                            interfaces, challenging the status quo of clean, safe design.</p>
+                        <a href="#" class="read-more">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- ITEM 2 -->
+                <article class="research-item animate-on-scroll">
+                    <div class="research-date">OCT 2025</div>
+                    <div class="research-content">
+                        <h2>Accessibility as an Aesthetic</h2>
+                        <p>How designing for accessibility first can actually lead to more interesting and robust visual
+                            design systems.</p>
+                        <a href="#" class="read-more">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- ITEM 3 -->
+                <article class="research-item animate-on-scroll">
+                    <div class="research-date">AUG 2025</div>
+                    <div class="research-content">
+                        <h2>Design Systems for Scale</h2>
+                        <p>A deep dive into managing massive design systems across multiple teams and platforms.</p>
+                        <a href="#" class="read-more">Read Article</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================================
+             SECTION: ABOUT
+             ========================================= -->
+        <section id="about" class="page-section">
+            <div style="padding-top: 120px;">
+                <h1 class="animate-on-scroll">About Me</h1>
+
+                <div class="split-layout animate-on-scroll">
+
+                    <div class="bio-column">
+                        <div class="bio-text">
+                            <p>
+                                Hello! I'm Doruk Türkmen, a visual designer and creative technologist. I believe that
+                                good
+                                design
+                                should be honest, functional, and just a little bit bold.
+                            </p>
+                            <p>
+                                With a background in [Your Background], I approach every project with a mix of strategic
+                                thinking and artistic intuition. I specialize in digital branding, UI/UX, and creating
+                                memorable
+                                web experiences.
+                            </p>
+                            <p>
+                                When I'm not designing, you can find me exploring brutalist architecture, taking photos,
+                                or
+                                writing about the intersection of design and technology.
+                            </p>
+
+                            <h3>Services</h3>
+                            <ul style="color: #888; margin-top: 10px; line-height: 2;">
+                                <li>— Brand Identity</li>
+                                <li>— User Interface Design</li>
+                                <li>— Art Direction</li>
+                                <li>— Front-End Development</li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-block">
+                            <h2>Get in Touch</h2>
+                            <p style="color: #888; margin-top: 10px;">Available for freelance opportunities and
+                                collaborations.
+                            </p>
+
+                            <div class="contact-links">
+                                <a href="mailto:hello@example.com" class="contact-link">hello@example.com</a>
+                                <a href="#" class="contact-link">Instagram</a>
+                                <a href="#" class="contact-link">LinkedIn</a>
+                                <a href="#" class="contact-link">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="image-column">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Portrait" class="profile-img">
+                        <p style="font-size: 0.8rem; color: #555; margin-top: 10px; text-align: right;">Photo by
+                            Unsplash</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Doruk Türkmen. All Rights Reserved.</p>
+        <div class="social-small">
+            <a href="#">Instagram</a> / <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

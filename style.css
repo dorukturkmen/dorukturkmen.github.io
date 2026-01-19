@@ -1,0 +1,482 @@
+/* =========================================
+   CSS VARIABLES (THEME CONFIGURATION)
+   ========================================= */
+:root {
+    --bg-color: #050505;
+    /* Very dark background */
+    --text-color: #e0e0e0;
+    /* White text */
+    --accent-color: #333333;
+    /* Dark Gray for borders/accents */
+    --card-bg: #0f0f0f;
+    /* Slightly lighter for cards */
+    --hover-color: #555555;
+    /* Lighter gray for hovers */
+    --grid-gap: 30px;
+
+    /* Fonts */
+    /* DM Sans for Body, Bricolage Grotesque for Headings */
+    --font-heading: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+}
+
+/* =========================================
+   RESET & BASE STYLES
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* SPA Utilities */
+.page-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.page-section.active-section {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: 0;
+    /* Brutalist - sharp edges */
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+section {
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* text-transform: uppercase; Removed per user request */
+    letter-spacing: 0.5px;
+    /* Reduced letter spacing slightly for sentence case */
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    opacity: 1;
+    color: #fff;
+}
+
+/* Mobile Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   COMPONENTS
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* =========================================
+   GRID SYSTEM (3 Column Fixed)
+   ========================================= */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Columns Fixed */
+    gap: 40px;
+    /* Spacing between cards */
+}
+
+.project-card {
+    background: transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid var(--accent-color);
+    /* Visible by default */
+}
+
+.project-card:hover {
+    border-color: var(--text-color);
+    /* Highlight on hover */
+}
+
+.card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4/3;
+    /* Consistent aspect ratio */
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: var(--card-bg);
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    opacity: 0.9;
+}
+
+.project-card:hover img {
+    opacity: 1;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.card-desc {
+    font-size: 1rem;
+    color: #bbb;
+    line-height: 1.5;
+}
+
+.card-tags {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border: 1px solid #333;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    padding: 40px 5%;
+    border-top: 1px solid var(--accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 60px;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cols on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        /* 1 col on mobile */
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+}
+
+/* =========================================
+   TEACHING PAGE STYLES (Refactored from inline)
+   ========================================= */
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.course-card {
+    border: 1px solid var(--accent-color);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Match Project Card */
+}
+
+.course-card:hover {
+    border-color: var(--text-color);
+    /* Add missing Lift Effect */
+}
+
+.course-semester {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 15px;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.course-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.course-card p {
+    color: #aaa;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.resource-link {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-decoration-color: #555;
+    transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+    color: #fff;
+    text-decoration-color: #fff;
+}
+
+/* =========================================
+   RESEARCH PAGE STYLES
+   ========================================= */
+.research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.research-item {
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+.research-date {
+    font-size: 0.9rem;
+    color: #666;
+    font-family: monospace;
+}
+
+.research-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.research-content p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    text-decoration: underline;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .research-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* =========================================
+   ABOUT PAGE STYLES
+   ========================================= */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+.bio-text p {
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: filter 0.5s;
+}
+
+.profile-img:hover {
+    filter: grayscale(0%);
+}
+
+.contact-block {
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 1px solid var(--accent-color);
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contact-link {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+}
+
+.contact-link:hover {
+    text-decoration-color: #fff;
+    color: #ccc;
+}
+
+@media (max-width: 900px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
