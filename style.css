@@ -2,21 +2,31 @@
    CSS VARIABLES (THEME CONFIGURATION)
    ========================================= */
 :root {
+    /* -----------------------------------------------------------
+     * COLOR PALETTE
+     * Change these hex codes to update your site's color scheme.
+     * ----------------------------------------------------------- */
     --bg-color: #050505;
-    /* Very dark background */
+    /* Main background color */
     --text-color: #e0e0e0;
-    /* White text */
+    /* Main text color */
     --accent-color: #333333;
-    /* Dark Gray for borders/accents */
+    /* Border color for cards and lines */
     --card-bg: #0f0f0f;
-    /* Slightly lighter for cards */
+    /* Background for project cards */
     --hover-color: #555555;
-    /* Lighter gray for hovers */
+    /* Color when hovering over elements */
     --grid-gap: 30px;
+    /* Space between grid items */
 
-    /* Fonts */
-    /* DM Sans for Body, Bricolage Grotesque for Headings */
+    /* -----------------------------------------------------------
+     * TYPOGRAPHY
+     * Change the font names here to update your site's fonts.
+     * Make sure you have imported the new fonts in index.html first!
+     * ----------------------------------------------------------- */
+    /* Headlines and big text */
     --font-heading: 'Bricolage Grotesque', sans-serif;
+    /* Body text and paragraphs */
     --font-body: 'DM Sans', sans-serif;
 }
 

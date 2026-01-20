@@ -8,30 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.page-section');
 
     function navigateTo(targetId) {
-        // Hide all sections
+        // 1. Hide all sections first
         sections.forEach(section => {
             section.classList.remove('active-section');
         });
 
-        // Remove active class from nav items
+        // 2. Remove 'active' styling from all nav buttons
         navItems.forEach(item => {
             item.classList.remove('active');
         });
 
-        // Show target section
+        // 3. Show the section user clicked on
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
             targetSection.classList.add('active-section');
         }
 
-        // Highlight nav item
+        // 4. Add 'active' styling to the clicked nav button
         navItems.forEach(item => {
             if (item.dataset.target === targetId) {
                 item.classList.add('active');
             }
         });
 
-        // Scroll to top
+        // 5. Scroll to top of page so user sees the start of new section
         window.scrollTo(0, 0);
     }
 
