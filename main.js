@@ -2,47 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================
-       SPA ROUTING
+       SPA ROUTING (REMOVED: Now using separate HTML files)
        ========================================= */
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = document.querySelectorAll('.page-section');
-
-    function navigateTo(targetId) {
-        // 1. Hide all sections first
-        sections.forEach(section => {
-            section.classList.remove('active-section');
-        });
-
-        // 2. Remove 'active' styling from all nav buttons
-        navItems.forEach(item => {
-            item.classList.remove('active');
-        });
-
-        // 3. Show the section user clicked on
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active-section');
-        }
-
-        // 4. Add 'active' styling to the clicked nav button
-        navItems.forEach(item => {
-            if (item.dataset.target === targetId) {
-                item.classList.add('active');
-            }
-        });
-
-        // 5. Scroll to top of page so user sees the start of new section
-        window.scrollTo(0, 0);
-    }
-
-    // Click Event Listeners
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = item.dataset.target;
-            navigateTo(targetId);
-        });
-    });
 
     /* =========================================
        TYPOGRAPHICAL EFFECT
