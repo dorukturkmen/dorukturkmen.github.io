@@ -6,7 +6,7 @@
      * COLOR PALETTE
      * Change these hex codes to update your site's color scheme.
      * ----------------------------------------------------------- */
-    --bg-color: #252525;
+    --bg-color: #ff0000;
     /* Main background color */
     --text-color: #e0e0e0;
     /* Main text color */
@@ -27,7 +27,7 @@
     /* Headlines and big text */
     --font-heading: 'Geist', sans-serif;
     /* Body text and paragraphs */
-    --font-body: 'DM Sans', sans-serif;
+    --font-body: 'Geist', sans-serif;
 }
 
 
