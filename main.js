@@ -5,27 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
        SPA ROUTING (REMOVED: Now using separate HTML files)
        ========================================= */
 
-    /* =========================================
-       TYPOGRAPHICAL EFFECT
-       ========================================= */
-    const shrinkElement = document.querySelector('.shrink-text');
-    if (shrinkElement) {
-        const text = shrinkElement.innerText;
-        const chars = text.split('');
-        shrinkElement.innerText = '';
 
-        chars.forEach((char, index) => {
-            const span = document.createElement('span');
-            span.textContent = char;
-
-            const totalChars = chars.length;
-            const size = 1 - (index / (totalChars - 1));
-            const finalSize = Math.max(0, size); // Avoid negative sizes
-
-            span.style.fontSize = `${finalSize}em`;
-            shrinkElement.appendChild(span);
-        });
-    }
 
     /* =========================================
        SCROLL ANIMATIONS (Intersection Observer)
