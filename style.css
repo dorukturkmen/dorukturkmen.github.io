@@ -24,11 +24,21 @@
      * Change the font names here to update your site's fonts.
      * Make sure you have imported the new fonts in index.html first!
      * ----------------------------------------------------------- */
+    .geist-<uniquifier> {
+        font-family: "Geist", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+    }
+
     /* Headlines and big text */
-    --font-heading: 'Bricolage Grotesque', sans-serif;
+    --font-heading: 'Geist',
+    sans-serif;
     /* Body text and paragraphs */
-    --font-body: 'DM Sans', sans-serif;
+    --font-body: 'DM Sans',
+    sans-serif;
 }
+
 
 /* =========================================
    RESET & BASE STYLES
