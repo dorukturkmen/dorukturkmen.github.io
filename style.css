@@ -6,13 +6,13 @@
      * COLOR PALETTE
      * Change these hex codes to update your site's color scheme.
      * ----------------------------------------------------------- */
-    --bg-color: #0e0e0e;
+    --bg-color: #0c0c0c;
     /* Main background color */
     --text-color: #e0e0e0;
     /* Main text color */
     --accent-color: #333333;
     /* Border color for cards and lines */
-    --card-bg: #1a1a1a;
+    --card-bg: #0c0c0c;
     /* Background for project cards */
     --hover-color: #555555;
     /* Color when hovering over elements */
@@ -192,7 +192,7 @@ nav {
 }
 
 .project-card {
-    background: transparent;
+    background-color: var(--card-bg);
     transition: transform 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -337,7 +337,7 @@ footer {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    background: transparent;
+    background-color: var(--card-bg);
     transition: transform 0.3s ease, border-color 0.3s ease;
     /* Match Project Card */
 }
