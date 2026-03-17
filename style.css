@@ -6,13 +6,13 @@
      * COLOR PALETTE
      * Change these hex codes to update your site's color scheme.
      * ----------------------------------------------------------- */
-    --bg-color: #050505;
+    --bg-color: #252525;
     /* Main background color */
     --text-color: #e0e0e0;
     /* Main text color */
     --accent-color: #333333;
     /* Border color for cards and lines */
-    --card-bg: #0f0f0f;
+    --card-bg: #252525;
     /* Background for project cards */
     --hover-color: #555555;
     /* Color when hovering over elements */
