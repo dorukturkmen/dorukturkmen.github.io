@@ -298,9 +298,9 @@ footer {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 0 5%;
-    margin: 0;
-    max-width: none;
+    padding: 0 5% 15vh 5%;
+    margin: 0 auto;
+    max-width: 1400px;
 }
 
 .hero-large {
@@ -323,12 +323,19 @@ footer {
 
 .hero-large p {
     font-family: 'DM Mono', monospace;
-    font-style: italic;
+    font-style: normal;
     font-weight: 300;
     font-size: 1.2rem;
     color: #bbb;
     line-height: 1.6;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
+    
+    text-align: justify;
+    text-align-last: justify;
+    width: 85%;
+    max-width: 600px;
+    position: relative;
+    left: -2%;
 }
 
 .hero-large p u {
