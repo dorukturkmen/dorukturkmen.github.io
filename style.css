@@ -299,8 +299,8 @@ footer {
     align-items: center;
     min-height: 100vh;
     padding: 0 5% 15vh 5%;
-    margin: 0 auto;
-    max-width: 1400px;
+    margin: 0;
+    max-width: none;
 }
 
 .hero-large {
@@ -311,11 +311,11 @@ footer {
 
 .hero-large h1 {
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 11.5cqi;
+    font-size: 11.5cqi; /* Reverted scale to fit cleanly edge-to-edge without overflowing */
     text-transform: uppercase;
     letter-spacing: 0em;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     line-height: 1;
     color: var(--text-color);
     white-space: nowrap;
@@ -325,17 +325,19 @@ footer {
     font-family: 'DM Mono', monospace;
     font-style: normal;
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #bbb;
     line-height: 1.6;
     letter-spacing: 0.02em;
+    text-transform: uppercase;
     
-    text-align: justify;
-    text-align-last: justify;
-    width: 85%;
-    max-width: 600px;
-    position: relative;
-    left: -2%;
+    /* Center text */
+    text-align: center;
+    width: auto; 
+    max-width: 90%;
+    
+    /* Center block */
+    margin: 15px auto 0 auto;
 }
 
 .hero-large p u {
