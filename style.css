@@ -25,9 +25,9 @@
      * Make sure you have imported the new fonts in index.html first!
      * ----------------------------------------------------------- */
     /* Headlines and big text */
-    --font-heading: 'Geist', sans-serif;
+    --font-heading: 'Instrument Sans', sans-serif;
     /* Body text and paragraphs */
-    --font-body: 'Geist', sans-serif;
+    --font-body: 'DM Mono', monospace;
 }
 
 
@@ -457,14 +457,64 @@ footer {
     font-family: monospace;
 }
 
+.research-type {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: 5px;
+}
+
 .research-content h2 {
     font-size: 1.8rem;
+    font-weight: 400;
     margin-bottom: 10px;
+}
+
+.research-authors {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 15px;
 }
 
 .research-content p {
     color: #aaa;
     margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.research-content p:hover {
+    color: #fff;
+}
+
+.research-content p.expanded {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    color: #ccc;
+}
+
+.research-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.research-keyword {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 4px 8px;
 }
 
 .read-more {

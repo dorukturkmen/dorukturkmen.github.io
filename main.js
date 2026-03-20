@@ -50,4 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* =========================================
+       RESEARCH ABSTRACT TOGGLE
+       ========================================= */
+    document.querySelectorAll('.research-content p').forEach(p => {
+        p.addEventListener('click', () => {
+            p.classList.toggle('expanded');
+        });
+    });
+
 });
