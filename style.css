@@ -311,7 +311,8 @@ footer {
 
 .hero-large h1 {
     font-family: 'Instrument Sans', sans-serif;
-    font-size: 11.5cqi; /* Reverted scale to fit cleanly edge-to-edge without overflowing */
+    font-size: 11.5cqi;
+    /* Reverted scale to fit cleanly edge-to-edge without overflowing */
     text-transform: uppercase;
     letter-spacing: 0em;
     font-weight: 400;
@@ -330,12 +331,12 @@ footer {
     line-height: 1.6;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    
+
     /* Center text */
     text-align: center;
-    width: auto; 
+    width: auto;
     max-width: 90%;
-    
+
     /* Center block */
     margin: 15px auto 0 auto;
 }
@@ -605,22 +606,57 @@ body::after {
     width: 200%;
     height: 200%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.05; /* Subtle darkness */
-    mix-blend-mode: multiply; /* Darkens the grain and makes it crispy */
-    pointer-events: none; /* Let clicks pass through */
-    z-index: 9999; /* Put it visually on top of everything */
-    animation: grain 8s steps(10) infinite;
+    opacity: 0.12;
+    /* Lower opacity as screen mode is much brighter */
+    mix-blend-mode: screen;
+    /* Screen blends the grain nicely with dark bg */
+    pointer-events: none;
+    /* Let clicks pass through */
+    z-index: 9999;
+    /* Put it visually on top of everything */
+    animation: grain 1s steps(10) infinite;
 }
 
 @keyframes grain {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-5%, -10%); }
-    20% { transform: translate(-15%, 5%); }
-    30% { transform: translate(7%, -25%); }
-    40% { transform: translate(-5%, 25%); }
-    50% { transform: translate(-15%, 10%); }
-    60% { transform: translate(15%, 0%); }
-    70% { transform: translate(0%, 15%); }
-    80% { transform: translate(3%, 35%); }
-    90% { transform: translate(-10%, 10%); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -5%);
+    }
+
+    20% {
+        transform: translate(-10%, 5%);
+    }
+
+    30% {
+        transform: translate(5%, -10%);
+    }
+
+    40% {
+        transform: translate(-5%, 15%);
+    }
+
+    50% {
+        transform: translate(-10%, 5%);
+    }
+
+    60% {
+        transform: translate(10%, 0%);
+    }
+
+    70% {
+        transform: translate(0%, 10%);
+    }
+
+    80% {
+        transform: translate(3%, 15%);
+    }
+
+    90% {
+        transform: translate(-10%, 5%);
+    }
 }
