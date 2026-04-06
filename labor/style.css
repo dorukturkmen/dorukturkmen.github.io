@@ -352,14 +352,17 @@ main {
   margin-bottom: 80px;
 }
 .team-header h1 {
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  text-transform: uppercase;
 }
 .team-header h4 {
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.15em;
   color: var(--text-main);
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .team-grid {
