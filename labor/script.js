@@ -89,4 +89,61 @@ document.addEventListener("DOMContentLoaded", () => {
         drawerCloseBtn.addEventListener('click', closeDrawer);
         drawerOverlay.addEventListener('click', closeDrawer);
     }
+
+    // Cluster Switching Logic for Research Page
+    const clusterBtns = document.querySelectorAll('.cluster-btn');
+    const clusterContents = document.querySelectorAll('.cluster-content');
+
+    if (clusterBtns.length > 0) {
+        clusterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetCluster = btn.getAttribute('data-cluster');
+
+                // Update buttons
+                clusterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update content
+                clusterContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetCluster) {
+                        content.classList.add('active');
+                    }
+                });
+
+                // Scroll to top of main content for better UX on mobile
+                // window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    }
+
+    // Render Research Articles
+    const renderArticles = () => {
+        if (typeof researchArticles === 'undefined') return;
+
+        researchArticles.forEach(article => {
+            const gridId = `${article.cluster}-grid`;
+            const grid = document.getElementById(gridId);
+
+            if (grid) {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+
+                const titleHTML = article.link 
+                    ? `<h3 class="article-title"><a href="${article.link}" target="_blank" rel="noopener noreferrer">${article.title}</a></h3>`
+                    : `<h3 class="article-title">${article.title}</h3>`;
+
+                articleCard.innerHTML = `
+                    <div class="article-year">${article.year}</div>
+                    ${titleHTML}
+                    <div class="article-journal">${article.journal || ''}</div>
+                    <div class="article-authors">${article.authors}</div>
+                `;
+                
+                grid.appendChild(articleCard);
+            }
+        });
+    };
+
+    renderArticles();
 });
