@@ -114,12 +114,9 @@ header {
   text-transform: uppercase;
   position: relative;
   z-index: 2;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-.nav-group a:hover {
-  opacity: 0.6;
-}
 
 .active a {
   color: #fff;
@@ -132,11 +129,6 @@ header {
   text-align: center;
   text-decoration: none;
   color: var(--text-main);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.logo-container:hover {
-  transform: scale(1.05);
 }
 
 .logo-img {
@@ -181,7 +173,43 @@ main {
 
 .hero-section {
   text-align: center;
+  margin-top: -10vh;
   animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-section h1 {
+  font-size: clamp(36px, 5vw, 64px);
+  background: linear-gradient(
+    -45deg, 
+    var(--color-home), 
+    var(--color-about), 
+    var(--color-people), 
+    var(--color-research)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: organicGradient 12s ease infinite;
+}
+
+@keyframes organicGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-section p {
+  font-size: clamp(16px, 1.8vw, 24px);
+  max-width: 800px;
+  margin: 0 auto 80px auto;
 }
 
 @keyframes slideUp {
@@ -199,7 +227,7 @@ main {
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
   margin-top: 20px;
 }
 
@@ -213,16 +241,18 @@ main {
   background-color: var(--text-main);
   transform: scaleX(0);
   transform-origin: bottom right;
-  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1), background-color 0.3s ease;
 }
 
 .btn:hover {
   transform: translateY(-2px);
+  color: var(--color-about);
 }
 
 .btn:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+  background-color: var(--color-about);
 }
 
 /* Page transitions */
@@ -784,4 +814,22 @@ main {
   }
   .cluster-nav { gap: 20px; }
   .articles-grid { grid-template-columns: 1fr; }
+}
+
+/* Footer */
+.site-footer {
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.site-footer p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  opacity: 0.6;
+  margin: 0 auto;
+  max-width: none;
 }
