@@ -19,6 +19,80 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Sliding Navigation Rectangle
+    const navGroup = document.querySelector('.nav-group');
+    if (navGroup) {
+        const slidingRect = document.createElement('div');
+        slidingRect.className = 'nav-sliding-rect';
+        // Insert at the beginning so it's behind the links
+        navGroup.insertBefore(slidingRect, navGroup.firstChild);
+
+        const navItems = navGroup.querySelectorAll('li');
+        let activeItem = navGroup.querySelector('li.active');
+        
+        const colors = {
+            'home': 'var(--color-home)',
+            'about': 'var(--color-about)',
+            'people': 'var(--color-people)',
+            'research': 'var(--color-research)',
+            'connect': 'var(--color-connect)'
+        };
+
+        const updateRect = (item) => {
+            navItems.forEach(navItem => {
+                const a = navItem.querySelector('a');
+                if (a) a.classList.remove('active-text');
+            });
+
+            if (!item) {
+                slidingRect.classList.remove('visible');
+                return;
+            }
+            const a = item.querySelector('a');
+            if (!a) return;
+            
+            a.classList.add('active-text');
+            
+            const linkText = a.textContent.trim().toLowerCase();
+            const color = colors[linkText] || 'var(--color-home)';
+            
+            const aRect = a.getBoundingClientRect();
+            const groupRect = navGroup.getBoundingClientRect();
+            
+            const newLeft = aRect.left - groupRect.left - 16;
+            const newTop = aRect.top - groupRect.top - 8;
+            const newWidth = aRect.width + 32;
+            const newHeight = aRect.height + 16;
+            
+            slidingRect.style.left = `${newLeft}px`;
+            slidingRect.style.top = `${newTop}px`;
+            slidingRect.style.width = `${newWidth}px`;
+            slidingRect.style.height = `${newHeight}px`;
+            slidingRect.style.backgroundColor = color;
+            slidingRect.classList.add('visible');
+        };
+        let returnTimeout;
+
+        // Initialize to active item
+        setTimeout(() => updateRect(activeItem), 100);
+        window.addEventListener('resize', () => {
+            clearTimeout(returnTimeout);
+            updateRect(activeItem);
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(returnTimeout);
+                updateRect(item);
+            });
+            item.addEventListener('mouseleave', () => {
+                returnTimeout = setTimeout(() => {
+                    updateRect(activeItem);
+                }, 300);
+            });
+        });
+    }
+
     // Intersection Observer for scroll interaction in Manifesto
     const observerOptions = {
         root: null,

@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAB-OR | Home</title>
-    <meta name="description" content="LAB-OR: Tracking the Everyday, Shaping the Future. an interdisciplinary research initiative.">
+    <meta name="description"
+        content="LAB-OR: Tracking the Everyday, Shaping the Future. an interdisciplinary research initiative.">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="home-page page-transition">
     <div class="container">
         <header>
-            <ul class="nav-group left-links">
+            <a href="index.html" class="logo-container">
+                <img src="labor_logo_web.svg" alt="LAB-OR Lab of the Ordinary" class="logo-img">
+            </a>
+
+            <ul class="nav-group">
                 <li class="active">
                     <a href="index.html">Home</a>
                     <div class="nav-circle"></div>
@@ -19,13 +26,6 @@
                     <a href="about.html">About</a>
                     <div class="nav-circle"></div>
                 </li>
-            </ul>
-
-            <a href="index.html" class="logo-container">
-                <img src="labor_logo_web.svg" alt="LAB-OR Lab of the Ordinary" class="logo-img">
-            </a>
-
-            <ul class="nav-group right-links">
                 <li>
                     <a href="people.html">People</a>
                     <div class="nav-circle"></div>
@@ -34,14 +34,48 @@
                     <a href="research.html">Research</a>
                     <div class="nav-circle"></div>
                 </li>
+                <li>
+                    <a href="connect.html">Connect</a>
+                    <div class="nav-circle"></div>
+                </li>
             </ul>
         </header>
 
-        <main>
+        <main class="home-main">
             <section class="hero-section">
-                <h1>Tracking the Everyday,<br>Shaping the Future.</h1>
-                <p>LAB-OR (Lab of the Ordinary) is an interdisciplinary research initiative dedicated to exploring the politics of everyday life through the lenses of media, technology, space, and affective practices. By bridging academic production with artistic and public projects, the lab investigates the micro-forms of resistance and solidarity embedded within the ordinary.</p>
-                <a href="about.html" class="btn">LEARN MORE</a>
+                <div class="hero-content">
+                    <h1>Tracking the Everyday,<br>Shaping the Future.</h1>
+                    <p>LAB-OR (Lab of the Ordinary) is an interdisciplinary research initiative dedicated to exploring the
+                        politics of everyday life through the lenses of media, technology, space, and affective practices.
+                        By bridging academic production with artistic and public projects, the lab investigates the
+                        micro-forms of resistance and solidarity embedded within the ordinary.</p>
+                    <a href="about.html" class="btn">LEARN MORE</a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <span>SCROLL FOR EVENTS</span>
+                    <span class="scroll-arrow">&darr;</span>
+                </div>
+            </section>
+
+            <!-- Event Spotlight Section -->
+            <section class="events-spotlight">
+                <div class="events-header">
+                    <span class="events-label">UPCOMING.</span>
+                </div>
+                
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <span class="event-month">OCT</span>
+                        <span class="event-day">14</span>
+                        <span class="event-year">2026</span>
+                    </div>
+                    <div class="event-info">
+                        <h3 class="event-title">Symposium on Everyday Life</h3>
+                        <p class="event-desc">Join us for an open discussion on the micro-forms of resistance embedded in daily routines. Featuring guest speakers and interactive sessions.</p>
+                    </div>
+                    <div class="event-arrow">&rarr;</div>
+                </a>
             </section>
         </main>
     </div>
@@ -54,4 +88,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

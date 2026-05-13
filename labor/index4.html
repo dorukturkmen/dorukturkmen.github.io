@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB-OR | Home</title>
+    <meta name="description"
+        content="LAB-OR: Tracking the Everyday, Shaping the Future. an interdisciplinary research initiative.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="home-page page-transition">
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo-container">
+                <img src="labor_logo_web.svg" alt="LAB-OR Lab of the Ordinary" class="logo-img">
+            </a>
+
+            <ul class="nav-group">
+                <li class="active">
+                    <a href="index.html">Home</a>
+                    <div class="nav-circle"></div>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                    <div class="nav-circle"></div>
+                </li>
+                <li>
+                    <a href="people.html">People</a>
+                    <div class="nav-circle"></div>
+                </li>
+                <li>
+                    <a href="research.html">Research</a>
+                    <div class="nav-circle"></div>
+                </li>
+                <li>
+                    <a href="connect.html">Connect</a>
+                    <div class="nav-circle"></div>
+                </li>
+            </ul>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <h1>Tracking the Everyday,<br>Shaping the Future.</h1>
+                <p>LAB-OR (Lab of the Ordinary) is an interdisciplinary research initiative dedicated to exploring the
+                    politics of everyday life through the lenses of media, technology, space, and affective practices.
+                    By bridging academic production with artistic and public projects, the lab investigates the
+                    micro-forms of resistance and solidarity embedded within the ordinary.</p>
+                <div class="hero-actions" style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+                    <a href="about.html" class="btn" style="margin-top: 0;">LEARN MORE</a>
+                    <button class="btn btn-secondary" id="eventsBtn" style="margin-top: 0; background: none; border: none; cursor: pointer; color: var(--color-home);">UPCOMING (1)</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Slide-out Events Drawer (Option 3) -->
+    <div class="drawer-overlay" id="eventsOverlay"></div>
+    <aside class="member-drawer" id="eventsDrawer">
+        <button class="drawer-close" id="eventsClose" aria-label="Close drawer">
+            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="drawer-content">
+            <span class="drawer-title" style="color: var(--color-home);">UPCOMING EVENTS</span>
+            <h2 class="drawer-name" style="margin-bottom: 60px;">Mark Your Calendar.</h2>
+
+            <div class="drawer-section">
+                <h4 style="color: var(--color-home);">OCT 14</h4>
+                <p><strong>Symposium on Everyday Life</strong><br>
+                Join us for an open discussion on the micro-forms of resistance embedded in daily routines. Featuring guest speakers and interactive sessions.</p>
+                <a href="#" style="color: var(--color-home); font-weight: 700; margin-top: 10px; display: inline-block;">Reserve Spot &rarr;</a>
+            </div>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 LAB-OR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const eventsBtn = document.getElementById('eventsBtn');
+        const eventsDrawer = document.getElementById('eventsDrawer');
+        const eventsOverlay = document.getElementById('eventsOverlay');
+        const eventsClose = document.getElementById('eventsClose');
+
+        function openEvents() {
+            eventsDrawer.classList.add('active');
+            eventsOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEvents() {
+            eventsDrawer.classList.remove('active');
+            eventsOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        eventsBtn.addEventListener('click', openEvents);
+        eventsClose.addEventListener('click', closeEvents);
+        eventsOverlay.addEventListener('click', closeEvents);
+    </script>
+</body>
+
+</html>
