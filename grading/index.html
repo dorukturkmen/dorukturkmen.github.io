@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f7f7f7;
+            --text-color: #1a1a1a;
+            --accent-color: #d1d1d1;
+            --card-bg: #ffffff;
+            --hover-color: #ebebeb;
+            --font-heading: 'Instrument Sans', sans-serif;
+            --font-body: 'DM Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 5%;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .inputs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .inputs-grid .input-section {
+            margin-bottom: 0;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 30px;
+            border: 1px solid var(--accent-color);
+            transition: opacity 0.3s;
+        }
+
+        .input-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            resize: vertical;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        textarea.small {
+            height: 80px;
+        }
+
+        textarea:focus {
+            border-color: #888;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid var(--text-color);
+            background: var(--text-color);
+            color: var(--card-bg);
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        .btn.outline {
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        .btn.outline:hover {
+            background: var(--text-color);
+            color: var(--card-bg);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .tags-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-color);
+            background: var(--bg-color);
+            color: #555;
+            text-transform: uppercase;
+        }
+        
+        .tag.special {
+            background: #eaeaea;
+            color: #333;
+            font-weight: 500;
+        }
+
+        #results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .inputs-grid,
+            #results {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .result-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            padding: 30px;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .result-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .student-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--accent-color);
+        }
+
+        .grade-output {
+            white-space: pre-wrap;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--text-color);
+            color: var(--card-bg);
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Grading Tool</h1>
+            <p>Establish a project base once, then paste student grades as needed.</p>
+        </header>
+
+        <div class="inputs-grid">
+            <section class="input-section">
+                <h2>1. Establish Project Base</h2>
+                <p style="margin-bottom: 15px; font-size: 0.85rem; color: #666;">
+                    Paste <b>ONLY</b> the header row here. <br>
+                    Expected structure: <b>ID | Name | Criteria... | Total | Comments</b>
+                </p>
+                <textarea id="headerInput" class="small" placeholder="ID&#9;Name&#9;Design %25&#9;Code %25&#9;Total&#9;Comments"></textarea>
+                <button class="btn" id="setBaseBtn">Set Project Base</button>
+                <div id="activeCriteria" class="tags-container"></div>
+            </section>
+
+            <section class="input-section" id="dataSection" style="opacity: 0.5; pointer-events: none;">
+                <h2>2. Paste Student Grades</h2>
+                <p style="margin-bottom: 15px; font-size: 0.85rem; color: #666;">
+                    Paste the student rows here (without the header).
+                </p>
+                <textarea id="dataInput" placeholder="101&#9;Alice&#9;25&#9;20&#9;45&#9;Great work!"></textarea>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn" id="generateBtn">Generate Output</button>
+                    <button class="btn outline" id="clearBtn">Clear Data</button>
+                </div>
+            </section>
+        </div>
+
+        <section id="results"></section>
+    </div>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        let currentHeaders = [];
+
+        document.getElementById('setBaseBtn').addEventListener('click', setProjectBase);
+        document.getElementById('generateBtn').addEventListener('click', processData);
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('dataInput').value = '';
+            document.getElementById('results').innerHTML = '';
+        });
+
+        function parseHeader(headerStr) {
+            let text = headerStr.trim();
+            // Match max score like "%25" or "25%"
+            const match = text.match(/^(.*?)[^\w]*([0-9]+)[%)]*$/);
+            
+            if (match) {
+                return {
+                    name: match[1].trim(),
+                    max: match[2]
+                };
+            }
+            return { name: text, max: null };
+        }
+
+        function setProjectBase() {
+            const input = document.getElementById('headerInput').value.trim();
+            if (!input) {
+                alert("Please paste a header row.");
+                return;
+            }
+
+            const rawHeaders = input.split('\t');
+            if (rawHeaders.length < 4) {
+                alert("Expected at least 4 columns (ID, Name, Criteria, Comments). Please check your data.");
+                return;
+            }
+
+            currentHeaders = rawHeaders.map(parseHeader);
+
+            // Render tags
+            const tagsContainer = document.getElementById('activeCriteria');
+            let tagsHTML = `<div style="width: 100%; font-size: 0.85rem; color: #333; margin-bottom: 5px;"><strong>Active Structure:</strong></div>`;
+            
+            currentHeaders.forEach((h, i) => {
+                let special = "";
+                if (i === 0) h.name = h.name || "ID";
+                if (i === 1) h.name = h.name || "Name";
+                
+                if (i === 0 || i === 1 || i === currentHeaders.length - 2 || i === currentHeaders.length - 1) {
+                    special = "special";
+                }
+                
+                let label = h.name;
+                if (h.max && i !== currentHeaders.length - 2 && i !== currentHeaders.length - 1) {
+                    label += ` (/${h.max})`;
+                }
+                tagsHTML += `<span class="tag ${special}">${label}</span>`;
+            });
+            
+            tagsContainer.innerHTML = tagsHTML;
+
+            // Enable Data Section
+            const dataSection = document.getElementById('dataSection');
+            dataSection.style.opacity = '1';
+            dataSection.style.pointerEvents = 'auto';
+            
+            document.getElementById('dataInput').focus();
+        }
+
+        function parseTSV(text) {
+            const rows = [];
+            let currentRow = [];
+            let currentCell = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                
+                if (inQuotes) {
+                    if (char === '"') {
+                        if (i + 1 < text.length && text[i+1] === '"') {
+                            currentCell += '"';
+                            i++;
+                        } else {
+                            inQuotes = false;
+                        }
+                    } else {
+                        currentCell += char;
+                    }
+                } else {
+                    if (char === '"') {
+                        inQuotes = true;
+                    } else if (char === '\t') {
+                        currentRow.push(currentCell);
+                        currentCell = '';
+                    } else if (char === '\n' || char === '\r') {
+                        if (char === '\r' && i + 1 < text.length && text[i+1] === '\n') {
+                            i++;
+                        }
+                        currentRow.push(currentCell);
+                        rows.push(currentRow);
+                        currentRow = [];
+                        currentCell = '';
+                    } else {
+                        currentCell += char;
+                    }
+                }
+            }
+            
+            if (currentCell !== '' || currentRow.length > 0) {
+                currentRow.push(currentCell);
+                rows.push(currentRow);
+            }
+            
+            return rows;
+        }
+
+        function processData() {
+            const input = document.getElementById('dataInput').value;
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (!input.trim() || currentHeaders.length === 0) return;
+
+            const rows = parseTSV(input.trim());
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                if (row.length === 1 && !row[0].trim()) continue;
+
+                // Expected: ID(0) | Name(1) | Criteria(2...N-3) | Total(N-2) | Comments(N-1)
+                const id = row[0] ? row[0].trim() : '';
+                const name = row[1] ? row[1].trim() : '';
+                
+                const title = id ? `${id} - ${name}` : name || `Student ${i+1}`;
+                let outputText = "";
+                
+                // Criteria
+                for (let j = 2; j < currentHeaders.length - 2; j++) {
+                    const header = currentHeaders[j];
+                    const score = row[j] ? row[j].trim() : "0";
+                    
+                    if (header.max) {
+                        outputText += `${header.name}: ${score}/${header.max}\n`;
+                    } else {
+                        outputText += `${header.name}: ${score}\n`;
+                    }
+                }
+                
+                // Total
+                const totalIndex = currentHeaders.length - 2;
+                if (totalIndex > 1) {
+                    const totalHeader = currentHeaders[totalIndex];
+                    const totalScore = row[totalIndex] ? row[totalIndex].trim() : "0";
+                    if (totalHeader.max) {
+                         outputText += `${totalHeader.name}: ${totalScore}/${totalHeader.max}\n`;
+                    } else {
+                         outputText += `${totalHeader.name}: ${totalScore}\n`;
+                    }
+                }
+                
+                // Comments
+                const commentIndex = currentHeaders.length - 1;
+                const commentText = row[commentIndex] ? row[commentIndex].trim() : "";
+                
+                if (commentText) {
+                    if (outputText.length > 0) {
+                        outputText += "\n";
+                    }
+                    outputText += commentText;
+                }
+
+                createResultCard(title, outputText);
+            }
+        }
+
+        function createResultCard(title, text) {
+            const container = document.getElementById('results');
+            
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            
+            const nameEl = document.createElement('div');
+            nameEl.className = 'student-name';
+            nameEl.textContent = title;
+            
+            const textEl = document.createElement('div');
+            textEl.className = 'grade-output';
+            textEl.textContent = text;
+            
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'btn outline copy-btn';
+            copyBtn.textContent = 'Copy';
+            
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast();
+                });
+            });
+            
+            card.appendChild(nameEl);
+            card.appendChild(textEl);
+            card.appendChild(copyBtn);
+            
+            container.appendChild(card);
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
