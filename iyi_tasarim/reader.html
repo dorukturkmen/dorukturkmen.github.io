@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi Tasarım 11 Başvuru İnceleme Aracı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="reader.css">
+</head>
+
+<body>
+    <div id="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>İyi Tasarım 11</h2>
+                <p>Başvuru İnceleme Aracı</p>
+            </div>
+
+            <div class="upload-zone" id="upload-zone">
+                <input type="file" id="file-input" accept=".xlsx, .xls, .csv" hidden>
+                <div class="upload-content">
+                    <i class="ph ph-upload-simple"></i>
+                    <p><strong>Excel dosyasını</strong> sürükleyin veya seçin</p>
+                    <span class="upload-hint">IT11_Workshops.xlsx</span>
+                </div>
+            </div>
+
+            <div class="filter-section" id="filter-section" style="display: none;">
+                <label for="type-filter">Başvuru Türü</label>
+                <div class="select-wrapper">
+                    <select id="type-filter">
+                        <option value="all">Tüm Başvurular</option>
+                    </select>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+            </div>
+
+            <div class="list-container" id="list-container">
+                <!-- Arama veya istatistik de eklenebilir -->
+                <div class="list-header" id="list-header" style="display: none;">
+                    <span id="result-count">0 Başvuru</span>
+                </div>
+                <ul class="application-list" id="application-list">
+                    <!-- List items will be injected here via JS -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content (Detail View) -->
+        <main class="main-content">
+            <div id="empty-state" class="empty-state">
+                <i class="ph ph-file-text"></i>
+                <h3>Okumaya Başlamak İçin Seçim Yapın</h3>
+                <p>Sol taraftan bir dosya yükleyin ve incelemek istediğiniz başvuruyu seçin.</p>
+            </div>
+
+            <div id="detail-view" class="detail-view" style="display: none;">
+                <!-- Detail header -->
+                <header class="detail-header">
+                    <div class="badges">
+                        <span class="badge" id="d-type">Atölye</span>
+                    </div>
+                    <h1 id="d-title">Başvuru Başlığı</h1>
+                    <div class="applicant-meta">
+                        <i class="ph ph-user"></i> <span id="d-name">Başvuran Kişi</span>
+                        <i class="ph ph-envelope-simple"></i> <a href="#" id="d-email">E-posta</a>
+                        <i class="ph ph-phone"></i> <span id="d-phone">Telefon</span>
+                        <i class="ph ph-clock"></i> <span id="d-date">Tarih</span>
+                    </div>
+                </header>
+
+                <div class="detail-body">
+                    <!-- Sections will be injected based on headers -->
+                    <div class="section">
+                        <h3><i class="ph ph-info"></i> Özgeçmiş</h3>
+                        <div class="content-block" id="d-bio"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-text-align-left"></i> Özet</h3>
+                        <div class="content-block" id="d-abstract"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-hash"></i> Anahtar Kelimeler</h3>
+                        <div class="tags" id="d-keywords"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-link"></i> Tema ile İlişkisi</h3>
+                        <div class="content-block" id="d-theme"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-users"></i> İşbirlikleri</h3>
+                        <div class="content-block" id="d-collab"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-calendar-blank"></i> Etkinlik Bilgileri</h3>
+                        <div class="content-block" id="d-event-details"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-check-circle"></i> Öngörülen Sonuç Ürün</h3>
+                        <div class="content-block" id="d-product"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-map-pin"></i> Mekan İhtiyacı</h3>
+                        <div class="content-block" id="d-space"></div>
+                    </div>
+
+                    <div class="section">
+                        <h3><i class="ph ph-toolbox"></i> Gerekli Araçlar & Talepler</h3>
+                        <div class="content-block" id="d-tools"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SheetJS for Excel Parsing -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <!-- Custom JS -->
+    <script src="reader.js"></script>
+</body>
+
+</html>
